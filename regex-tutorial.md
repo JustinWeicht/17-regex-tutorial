@@ -1,8 +1,6 @@
- ![GitHub](https://img.shields.io/github/license/JustinWeicht/17-regex-tutorial)
+![GitHub](https://img.shields.io/github/license/JustinWeicht/17-regex-tutorial)
 
-  # 17-regex-tutorial
-
-# Regex Tutorial
+# 17-regex-tutorial\
 
 ## Summary
 High-level description of Regular Expressions, AKA RegEx: An expression that is used to ensure that specific matches/patterns are present within a String.
@@ -14,7 +12,6 @@ Imagine registering an account for a new website - you typically have to enter i
 ## Table of Contents
 
 - [17-regex-tutorial](#17-regex-tutorial)
-- [Regex Tutorial](#regex-tutorial)
   - [Summary](#summary)
   - [Table of Contents](#table-of-contents)
   - [Regex Components](#regex-components)
