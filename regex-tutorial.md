@@ -4,8 +4,6 @@
 
 # Regex Tutorial
 
-To begin, Regex is short for regular expressions(reg-ex). Regex is mainly used to parse through text content and look for specific patterns or inputs.
-
 ## Summary
 High-level description of Regular Expressions, AKA RegEx: An expression that is used to ensure that specific matches/patterns are present within a String.
 
