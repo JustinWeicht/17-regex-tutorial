@@ -144,12 +144,6 @@ Result:   Match 1: justinweicht11@gmail.com
 Our greedy match quantifiers are the '+' symbols before the closing parenthesis. ie: ( -_]+)
 The lazy match quantifier is the '?' after the last closing parenthesis. ie: 8})?$/y
 
-### Boundaries
-
-### Back-references
-
-### Look-ahead and Look-behind
-
 ## Author
 Created by: [JustinWeicht](https://github.com/JustinWeicht)
   
