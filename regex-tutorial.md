@@ -29,9 +29,6 @@ Imagine registering an account for a new website - you typically have to enter i
     - [OR Operator](#or-operator)
     - [Bracket Expressions](#bracket-expressions)
     - [Greedy and Lazy Match](#greedy-and-lazy-match)
-    - [Boundaries](#boundaries)
-    - [Back-references](#back-references)
-    - [Look-ahead and Look-behind](#look-ahead-and-look-behind)
   - [Author](#author)
 
 ## Regex Components
