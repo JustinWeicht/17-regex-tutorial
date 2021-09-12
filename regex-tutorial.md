@@ -6,7 +6,7 @@
 High-level description of Regular Expressions, AKA RegEx: An expression that is used to ensure that specific matches/patterns are present within a String.
 
 Practical implication that utilizes RegEx: 
-Imagine registering an account for a new website - you typically have to enter in your email and create a password that contains specific characters. This is where Regex can be used to confirm that "@" and "." were both used in your email, You may have experienced ta similar response before - "Email must contain @ followed by .". This is RegEx. Using this example and quite a bit of reading, you will be able to learn the fundamentals of RegEx. 
+Imagine registering an account for a new website - you typically have to enter in your email and create a password that contains specific characters. This is where Regex can be used to confirm that "@" and "." were both used in your email. You may have experienced a similar response before - "Email must contain @ followed by .". This is RegEx. Using the example below and this readme, you will be able to learn the fundamentals of RegEx. 
 
 
 ## Table of Contents
@@ -29,22 +29,22 @@ Imagine registering an account for a new website - you typically have to enter i
 ## Regex Components
 
 ### Example
-In this example we are checking for patterns/specific inputs in an email and password. 
+In this example we are checking for patterns/specific inputs for an email and password. 
 
-RegEx example for the email: /^([a-z\d\._-]+)@([a-z\d_-]+)\.([a-z]{2,32})(\.[a-z]{2,8})?$/y
-RegEx example for the password: /^([a-zA-Z0-9_-.~!@#$%^&*()=+<>,]{3,32})$/y
+RegEx example for the email: /^([a-z\d\._-]+)@([a-z\d_-]+)\.([a-z]{2,32})(\.[a-z]{2,8})?$/
+RegEx example for the password: /^([a-zA-Z0-9_-.~!@#$%^&*()=+<>,]{8,32})?$/
 
-In the following document we will get started by breaking this example down so we can approach this more easily and understand whats happening inside of these examples.
+In the following document we will get started by breaking down this example so we can approach this more easily and understand whats happening inside of these examples.
 
 ### Anchors
 Anchors are used to match a position within a string.
 
-We are able to define the beginning and ending of a string by using '^' and '$' respectively. Furthermore we can use /b and /B to look for word boundaries and not word boundaries.
+We are able to define the beginning and ending of a string by using '^' and '$' respectively. Furthermore, we can use /b and /B to look for word boundaries and not word boundaries.
 
 ### Quantifiers
 Quantifiers are used to ensure that the input is a certain length.
 
-In our case we are using {3,32} because we want the password to be be at least 3 characters long and shorter than 32 as a whole.
+In our case we are using 3 quantifiers - {2,32}, {2,8}, {8,32}. In the last quantifier we want the password to be be at least 8 characters long and shorter than 32 as a whole.
 
 ### Character Classes
 Character classes match the specified characters from a given set.
@@ -66,7 +66,7 @@ These are all of the character classes with their matching syntax beside:
  - Unicode Script \p{Han}
  - Not Unicode Script \P{Han}
 
-In the example above we are checking for lowercase letters, uppercase letters, digits, and special characters [a-zA-Z0-9~!@#$%^&*()_=+<>,-].
+In the example above we are checking for lowercase letters(a-z), digits(\d), and special characters(\._-): /^([a-z\d\._-]+)@([a-z\d_-]+)\.([a-z]{2,32})(\.[a-z]{2,8})?$/
 
 ### Flags
 Flags alter how the Regex expression is interpreted. They are entered after the closing /.
@@ -86,34 +86,38 @@ A grouping is preformed by using parenthesis within our expression.
  - Numeric Reference (\w)a\1 will reference the first group whereas \2 would reference the second group
  - Non-Capturing Groups (?:ABC) groups tokens together without creating a capture group
 
-In the example we group the character set and quantifier together for the password: ([a-zA-Z0-9~!@#$%^&*()_=+<>,-]{3,32}).
+In the example we group the character set and quantifier together for the password: ([a-z\d\._-]+)@([a-z\d_-]+)\.([a-z]{2,32})(\.[a-z]{2,8}).
 
 ### OR Operator
 With your newfound knowledge of grouping and capturing, let's discuss the OR Operator. OR Operators are contained within a group and use the "pipe" character(|) to separate the values (x|y). Multiple pipes can be used if multiple values are required (x|y|z). Since our example doesn't use an OR operator we will look at a new one that does.
 
 OR Operator Example:
-We have a (cat|dog), and love to (snuggle|walk) him.
+We have a (cat|dog), and enjoy his (company|attitude).
 
 The example OR Operator would match any of the following input strings:
-We have a cat, and love to snuggle him.
-We have a cat, and love to walk him.
-We have a dog, and love to snuggle him.
-We have a dog, and love to walk him.
+We have a cat, and enjoy his company.
+We have a cat, and enjoy his attitude.
+We have a dog, and enjoy his company.
+We have a dog, and enjoy his attitude.
 
-As you can see - any combination of words and/or values in the OR Operator will result in a match.
+As you can see, any combination of words and/or values in the OR Operator will result in a match.
 
 ### Bracket Expressions
-A bracket expression used to check for a matching or non-matching expression. This expression uses a set of square brackets([]). Any independent character within these brackets will be matched, example below.
+A bracket expression used to check for a matching or non-matching expression. This expression uses a set of square brackets([]). Any independent character within these brackets can be matched, or excluded.
 
 - Match independent characters: ^[AbCdeFGHi]$
-- Match a specific string of characters: ^[this is a string]$
 - Exclude characters from match: [^AbCdeFGHi]
 - Special characters such as '.', ',', '*', '[', and '\\' will lose their properties while inside of a bracket expression
 
-### Greedy and Lazy Match
-We'll discuss a Greedy Match, then explain what it does. Afterwards we will look at an example of each match type and compare it to our example. 
+In our example we are matching both the email and password to our desired patern: 
+RegEx example for the email: [a-z\d\._-], [a-z\d_-], [a-z]
+RegEx example for the password: [a-zA-Z0-9_-.~!@#$%^&*()=+<>,]
 
-A greedy match acts like it's title - it's greedy, and attempts to match every position in the string. Furthermore, it will search the next position if there isn't a match. Let's compare a Lazy, Greedy and our example to one another.
+### Greedy and Lazy Match
+We'll look at Greedy Matches and explain what it does. Afterwards we will look at an example of each match type and compare it to our example. 
+
+A greedy match acts like it's title - it's greedy, and attempts to match every position in the string. Furthermore, it will search the next position if there isn't a match. This could lead to an undesirable result where redundant information is returned. 
+Let's compare a Greedy, Lazy, and our example to one another.
 
 Greedy Example:
 RegEx: /".+"/g
@@ -133,6 +137,7 @@ Result:   Match 1: justinweicht11@gmail.com
           Group 2: gmail
           Group 3: com
 
+The "Results:" speak for themself. If the goal is to return the values in quotations, the Lazy Match does what we would expect.
 Our greedy match quantifiers are the '+' symbols before the closing parenthesis. ie: ( -_]+)
 The lazy match quantifier is the '?' after the last closing parenthesis. ie: 8})?$/y
 
